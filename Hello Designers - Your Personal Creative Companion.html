@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://hello-designers.vercel.app/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Designers - Your Personal Creative Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff00;
+            --primary-rgb: 0, 255, 0;
+            --background: #000000;
+            --card: #0a0a0a;
+            --foreground: #ffffff;
+            --muted-foreground: #a3a3a3;
+            --destructive: #ff4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.6);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-glow { animation: glow 2s ease-in-out infinite; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-bounce { animation: bounce 2s ease-in-out infinite; }
+        .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+            margin-top: 60px;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 255, 0, 0.05) 100%);
+        }
+
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .hero-orb-1 {
+            top: 20%;
+            left: 20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 255, 0, 0.15);
+            box-shadow: 0 0 80px rgba(0, 255, 0, 0.2);
+        }
+
+        .hero-orb-2 {
+            bottom: 20%;
+            right: 20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 60px rgba(0, 255, 0, 0.1);
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-title-primary {
+            color: var(--foreground);
+        }
+
+        .hero-title-accent {
+            color: var(--primary);
+            animation: glow 2s ease-in-out infinite 0.2s;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.3));
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 1.5rem auto 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .hero-description:hover {
+            color: var(--foreground);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--background);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(0, 255, 0, 0.6);
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover .btn-arrow {
+            transform: translateX(4px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .scroll-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .scroll-line {
+            width: 2px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--primary), transparent);
+            margin: 0 auto;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Services Section */
+        .services {
+            position: relative;
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, var(--background), rgba(0, 255, 0, 0.02));
+        }
+
+        .services-background {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .services-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .services-orb-1 {
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .services-orb-2 {
+            bottom: 25%;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tier-card {
+            position: relative;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .tier-card.featured {
+            border: 2px solid rgba(0, 255, 0, 0.8);
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.25), rgba(0, 255, 0, 0.1));
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        .tier-card:hover {
+            border-color: rgba(0, 255, 0, 0.6);
+            background: rgba(0, 255, 0, 0.08);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        .tier-card.featured:hover {
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.5);
+        }
+
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: 0;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.2), transparent);
+            filter: blur(20px);
+            transition: opacity 0.7s ease;
+        }
+
+        .tier-card:hover::before {
+            opacity: 1;
+        }
+
+        .tier-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .tier-experience {
+            font-size: 0.85rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+
+        .tier-rate {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.2));
+        }
+
+        .tier-rate-label {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .tier-description {
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tier-features {
+            list-style: none;
+            space-y: 0.5rem;
+        }
+
+        .tier-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tier-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            flex-shrink: 0;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .tier-features li:hover {
+            color: var(--foreground);
+        }
+
+        /* Contact Section */
+        .contact {
+            position: relative;
+            padding: 5rem 2rem;
+            background: linear-gradient(to top, rgba(0, 255, 0, 0.02), var(--background));
+        }
+
+        .contact-background {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .contact-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .contact-orb-1 {
+            top: 50%;
+            left: 25%;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 255, 0, 0.08);
+        }
+
+        .contact-orb-2 {
+            bottom: 25%;
+            right: 25%;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 255, 0, 0.08);
+            animation-delay: 1s;
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            transition: all 0.5s ease;
+            animation: fadeInUp 0.8s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .form-card:hover {
+            border-color: rgba(0, 255, 0, 0.6);
+            background: rgba(0, 255, 0, 0.07);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .form-group.delay-1 { animation-delay: 0.2s; }
+        .form-group.delay-2 { animation-delay: 0.3s; }
+        .form-group.delay-3 { animation-delay: 0.4s; }
+        .form-group.delay-4 { animation-delay: 0.5s; }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--foreground);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--muted-foreground);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 255, 0, 0.08);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .form-group-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: var(--background);
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+            margin-top: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .form-note a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .form-note a:hover {
+            color: var(--foreground);
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(0, 255, 0, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem 2rem 1rem;
+            color: var(--muted-foreground);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .footer-section a, .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 0, 0.1);
+            font-size: 0.85rem;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            position: relative;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tier-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header id="header" style="border-bottom-color: rgba(0, 255, 0, 0.1); box-shadow: none;">
+        <div class="header-content">
+            <a href="https://hello-designers.vercel.app/#" class="logo">Hello Designers</a>
+            <nav>
+                <a href="https://hello-designers.vercel.app/#services">Services</a>
+                <a href="https://hello-designers.vercel.app/#contact">Contact</a>
+                <a href="tel:+919789564100">Call: 79895 64100</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-orb hero-orb-1" id="orb1" style="transition: transform 0.3s ease-out; transform: translate(37.3037px, 29.9009px);"></div>
+            <div class="hero-orb hero-orb-2" id="orb2" style="transition: transform 0.3s ease-out; transform: translate(-37.3037px, -29.9009px);"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">✨ Your Personal Creative Companion</div>
+            <h1 class="hero-title">
+                <span class="hero-title-primary">Professional Designers</span>
+                <span class="hero-title-accent">Always With You</span>
+            </h1>
+            <p class="hero-description">
+                Connect with experienced designers at every level. From Design Associates to Directors, we deliver tailored creative solutions for businesses and creative minds.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="https://hello-designers.vercel.app/#services" class="btn btn-primary">
+                    Explore Services
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="https://hello-designers.vercel.app/#contact" class="btn btn-secondary">
+                    Request a Designer
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-text">Scroll to explore</div>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-background">
+            <div class="services-orb services-orb-1" style="transform: translateY(0px);"></div>
+            <div class="services-orb services-orb-2" style="transform: translateY(0px);"></div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 10;">
+            <div class="section-header">
+                <h2 class="section-title">Designer Levels</h2>
+                <p class="section-subtitle">Choose the right designer for your project based on experience and expertise</p>
+            </div>
+
+            <div class="tiers-grid" id="tiers-grid">
+                <div class="tier-card animated" style="animation-delay: 0s">
+                    <h3 class="tier-title">Design Associate</h3>
+                    <p class="tier-experience">1-2 Years Experienced</p>
+                    <div>
+                        <div class="tier-rate">₹300 - ₹400</div>
+                        <div class="tier-rate-label">per hour</div>
+                    </div>
+                    <p class="tier-description">Perfect for getting started with fresh, energetic design perspectives</p>
+                    <ul class="tier-features">
+                        <li>Social media designs</li><li>Basic graphic design</li><li>Quick turnarounds</li><li>Creative collaboration</li>
+                    </ul>
+                </div>
+            
+                <div class="tier-card animated" style="animation-delay: 0.1s">
+                    <h3 class="tier-title">Design Analyst</h3>
+                    <p class="tier-experience">2-5 Years Experienced</p>
+                    <div>
+                        <div class="tier-rate">₹400 - ₹800</div>
+                        <div class="tier-rate-label">per hour</div>
+                    </div>
+                    <p class="tier-description">Ideal for mid-level projects with strategic design approach</p>
+                    <ul class="tier-features">
+                        <li>Branding projects</li><li>UI/UX design</li><li>Marketing materials</li><li>Design consultation</li><li>Process optimization</li>
+                    </ul>
+                </div>
+            
+                <div class="tier-card featured animated" style="animation-delay: 0.2s">
+                    <h3 class="tier-title">Design Specialist</h3>
+                    <p class="tier-experience">5-9 Years Experienced</p>
+                    <div>
+                        <div class="tier-rate">₹800 - ₹2000</div>
+                        <div class="tier-rate-label">per hour</div>
+                    </div>
+                    <p class="tier-description">Expert-level design for complex, high-impact projects</p>
+                    <ul class="tier-features">
+                        <li>Complete branding systems</li><li>Advanced UI/UX design</li><li>Digital strategy</li><li>Team mentorship</li><li>Custom solutions</li>
+                    </ul>
+                </div>
+            
+                <div class="tier-card animated" style="animation-delay: 0.30000000000000004s">
+                    <h3 class="tier-title">Design Expert</h3>
+                    <p class="tier-experience">9-13 Years Experienced</p>
+                    <div>
+                        <div class="tier-rate">₹2000 - ₹3000</div>
+                        <div class="tier-rate-label">per hour</div>
+                    </div>
+                    <p class="tier-description">Senior expertise for enterprise-level design challenges</p>
+                    <ul class="tier-features">
+                        <li>Strategic design direction</li><li>Large-scale projects</li><li>Industry leadership</li><li>Executive consultation</li><li>Innovation-focused solutions</li>
+                    </ul>
+                </div>
+            
+                <div class="tier-card animated" style="animation-delay: 0.4s">
+                    <h3 class="tier-title">Design Director</h3>
+                    <p class="tier-experience">13+ Years Experienced</p>
+                    <div>
+                        <div class="tier-rate">₹3000 - ₹5000</div>
+                        <div class="tier-rate-label">per hour</div>
+                    </div>
+                    <p class="tier-description">Visionary leadership for transformative design initiatives</p>
+                    <ul class="tier-features">
+                        <li>Design direction &amp; vision</li><li>Team leadership</li><li>Strategic partnerships</li><li>Award-winning concepts</li><li>Executive-level guidance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-background">
+            <div class="contact-orb contact-orb-1" style="transform: translateY(0px);"></div>
+            <div class="contact-orb contact-orb-2" style="transform: translateY(0px);"></div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 10;">
+            <div class="section-header">
+                <h2 class="section-title">Request a Designer</h2>
+                <p class="section-subtitle">Fill out the form below and we'll connect you with the perfect designer for your project</p>
+            </div>
+
+            <div class="contact-form-container">
+                <div class="form-card">
+                    <form id="contact-form">
+                        <div class="form-group-row">
+                            <div class="form-group delay-1">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required="">
+                            </div>
+                            <div class="form-group delay-2">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group-row">
+                            <div class="form-group delay-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div class="form-group delay-4">
+                                <label for="level" class="form-label">Designer Level Needed *</label>
+                                <select id="level" name="designerLevel" required="">
+                                    <option value="">Select a level</option>
+                                    <option value="Design Associate">Design Associate (1-2 yrs)</option>
+                                    <option value="Design Analyst">Design Analyst (2-5 yrs)</option>
+                                    <option value="Design Specialist">Design Specialist (5-9 yrs)</option>
+                                    <option value="Design Expert">Design Expert (9-13 yrs)</option>
+                                    <option value="Design Director">Design Director (13+ yrs)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group delay-3">
+                            <label for="description" class="form-label">Project Description *</label>
+                            <textarea id="description" name="projectDescription" placeholder="Tell us about your design project..." required=""></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submit-btn">Send Request</button>
+
+                        <p class="form-note">
+                            Or call us directly: <a href="tel:+919789564100">79895 64100</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Hello Designers</h4>
+                <p>Your personal creative companion, always with you.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="https://hello-designers.vercel.app/#services">Designer Levels</a><br>
+                <a href="https://hello-designers.vercel.app/#contact">Request Designer</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: Support@hellodesigners.in</p>
+                <p>Phone: 79895 64100</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links</h4>
+                <a href="https://hello-designers.vercel.app/#hero">Home</a><br>
+                <a href="https://hello-designers.vercel.app/#services">Services</a><br>
+                <a href="https://hello-designers.vercel.app/#contact">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Hello Designers. All rights reserved. Your Personal Creative Companion.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Parallax and Interactivity -->
+    <script>
+        // Service tiers data
+        const tiers = [
+            {
+                title: "Design Associate",
+                experience: "1-2 Years Experienced",
+                hourlyRate: "₹300 - ₹400",
+                description: "Perfect for getting started with fresh, energetic design perspectives",
+                features: ["Social media designs", "Basic graphic design", "Quick turnarounds", "Creative collaboration"]
+            },
+            {
+                title: "Design Analyst",
+                experience: "2-5 Years Experienced",
+                hourlyRate: "₹400 - ₹800",
+                description: "Ideal for mid-level projects with strategic design approach",
+                features: ["Branding projects", "UI/UX design", "Marketing materials", "Design consultation", "Process optimization"]
+            },
+            {
+                title: "Design Specialist",
+                experience: "5-9 Years Experienced",
+                hourlyRate: "₹800 - ₹2000",
+                description: "Expert-level design for complex, high-impact projects",
+                features: ["Complete branding systems", "Advanced UI/UX design", "Digital strategy", "Team mentorship", "Custom solutions"],
+                featured: true
+            },
+            {
+                title: "Design Expert",
+                experience: "9-13 Years Experienced",
+                hourlyRate: "₹2000 - ₹3000",
+                description: "Senior expertise for enterprise-level design challenges",
+                features: ["Strategic design direction", "Large-scale projects", "Industry leadership", "Executive consultation", "Innovation-focused solutions"]
+            },
+            {
+                title: "Design Director",
+                experience: "13+ Years Experienced",
+                hourlyRate: "₹3000 - ₹5000",
+                description: "Visionary leadership for transformative design initiatives",
+                features: ["Design direction & vision", "Team leadership", "Strategic partnerships", "Award-winning concepts", "Executive-level guidance"]
+            }
+        ];
+
+        // Render tier cards
+        function renderTiers() {
+            const grid = document.getElementById('tiers-grid');
+            grid.innerHTML = tiers.map((tier, index) => `
+                <div class="tier-card ${tier.featured ? 'featured' : ''}" style="animation-delay: ${index * 0.1}s">
+                    <h3 class="tier-title">${tier.title}</h3>
+                    <p class="tier-experience">${tier.experience}</p>
+                    <div>
+                        <div class="tier-rate">${tier.hourlyRate}</div>
+                        <div class="tier-rate-label">per hour</div>
+                    </div>
+                    <p class="tier-description">${tier.description}</p>
+                    <ul class="tier-features">
+                        ${tier.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        // Parallax scroll effect
+        let scrollProgress = 0;
+        window.addEventListener('scroll', () => {
+            scrollProgress = window.scrollY;
+            
+            // Parallax hero orbs
+            const orb1 = document.getElementById('orb1');
+            const orb2 = document.getElementById('orb2');
+            
+            if (orb1 && orb2) {
+                orb1.style.transform = `translateY(${scrollProgress * 0.3}px)`;
+                orb2.style.transform = `translateY(${scrollProgress * -0.2}px)`;
+            }
+
+            // Parallax service orbs
+            const serviceOrbs = document.querySelectorAll('.services-orb');
+            serviceOrbs.forEach((orb, index) => {
+                const offset = index === 0 ? 0.2 : -0.15;
+                orb.style.transform = `translateY(${scrollProgress * offset}px)`;
+            });
+
+            // Parallax contact orbs
+            const contactOrbs = document.querySelectorAll('.contact-orb');
+            contactOrbs.forEach((orb, index) => {
+                const offset = index === 0 ? 0.25 : -0.25;
+                orb.style.transform = `translateY(${scrollProgress * offset}px)`;
+            });
+
+            // Update header
+            const header = document.getElementById('header');
+            if (scrollProgress > 50) {
+                header.style.borderBottomColor = 'rgba(0, 255, 0, 0.2)';
+                header.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.1)';
+            } else {
+                header.style.borderBottomColor = 'rgba(0, 255, 0, 0.1)';
+                header.style.boxShadow = 'none';
+            }
+        }, { passive: true });
+
+        // Mouse tracking for hero orbs
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const orb1 = document.getElementById('orb1');
+            const orb2 = document.getElementById('orb2');
+            
+            if (orb1 && orb2) {
+                orb1.style.transition = 'transform 0.3s ease-out';
+                orb2.style.transition = 'transform 0.3s ease-out';
+                
+                orb1.style.transform = `translate(${mouseX * 50}px, ${mouseY * 50 + scrollProgress * 0.3}px)`;
+                orb2.style.transform = `translate(${-mouseX * 50}px, ${-mouseY * 50 + scrollProgress * -0.2}px)`;
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                designerLevel: document.getElementById('level').value,
+                projectDescription: document.getElementById('description').value
+            };
+
+            const subject = `Design Request - ${formData.designerLevel || 'Design Services'}`;
+            const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Designer Level Requested: ${formData.designerLevel || 'Not specified'}
+
+Project Description:
+${formData.projectDescription}
+            `.trim();
+
+            const mailtoLink = `mailto:support@hellodesigners.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+
+            // Show success feedback
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Opening email...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('contact-form').reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1000);
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize
+        renderTiers();
+
+        // Intersection observer for animation trigger
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.tier-card').forEach(card => observer.observe(card));
+    </script>
+
+
+</body></html>
