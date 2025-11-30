@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0035)https://hello-designers.vercel.app/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Designers - Your Personal Creative Companion</title>
     <style>
@@ -485,6 +485,186 @@
             color: var(--foreground);
         }
 
+        /* Career Section */
+        .career {
+            position: relative;
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, rgba(0, 255, 0, 0.02), var(--background));
+        }
+
+        .career-background {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .career-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .career-orb-1 {
+            top: 25%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 255, 0, 0.08);
+        }
+
+        .career-orb-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 255, 0, 0.08);
+            animation-delay: 2s;
+        }
+
+        .career-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .career-heading {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--foreground);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .career-heading-accent {
+            color: var(--primary);
+            animation: glow 2s ease-in-out infinite 0.2s;
+        }
+
+        .career-benefits {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .career-benefits h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .career-benefits ul {
+            list-style: none;
+        }
+
+        .career-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            color: var(--foreground);
+        }
+
+        .career-benefits li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .career-requirements {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .career-requirements h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .career-requirements p {
+            color: var(--foreground);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .career-form-container {
+            max-width: 700px;
+            margin: 3rem auto 0;
+        }
+
+        .career-form-card {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            transition: all 0.5s ease;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .career-form-card:hover {
+            border-color: rgba(0, 255, 0, 0.6);
+            background: rgba(0, 255, 0, 0.07);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        .career-form-group {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .career-form-group.delay-1 { animation-delay: 0.4s; }
+        .career-form-group.delay-2 { animation-delay: 0.5s; }
+        .career-form-group.delay-3 { animation-delay: 0.6s; }
+
+        .career-submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: var(--background);
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            animation: fadeInUp 0.8s ease-out 0.7s forwards;
+            opacity: 0;
+        }
+
+        .career-submit-btn:hover:not(:disabled) {
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .career-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         /* Contact Section */
         .contact {
             position: relative;
@@ -725,12 +905,13 @@
 </head>
 <body>
     <!-- Header Navigation -->
-    <header id="header" style="border-bottom-color: rgba(0, 255, 0, 0.1); box-shadow: none;">
+    <header id="header">
         <div class="header-content">
-            <a href="https://hello-designers.vercel.app/#" class="logo">Hello Designers</a>
+            <a href="#" class="logo">Hello Designers</a>
             <nav>
-                <a href="https://hello-designers.vercel.app/#services">Services</a>
-                <a href="https://hello-designers.vercel.app/#contact">Contact</a>
+                <a href="#services">Services</a>
+                <a href="#career">Career</a>
+                <a href="#contact">Contact</a>
                 <a href="tel:+919789564100">Call: 79895 64100</a>
             </nav>
         </div>
@@ -739,8 +920,8 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-background">
-            <div class="hero-orb hero-orb-1" id="orb1" style="transition: transform 0.3s ease-out; transform: translate(37.3037px, 29.9009px);"></div>
-            <div class="hero-orb hero-orb-2" id="orb2" style="transition: transform 0.3s ease-out; transform: translate(-37.3037px, -29.9009px);"></div>
+            <div class="hero-orb hero-orb-1" id="orb1"></div>
+            <div class="hero-orb hero-orb-2" id="orb2"></div>
         </div>
 
         <div class="hero-content">
@@ -754,23 +935,28 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="https://hello-designers.vercel.app/#services" class="btn btn-primary">
+                <a href="#services" class="btn btn-primary">
                     Explore Services
                     <span class="btn-arrow">→</span>
                 </a>
-                <a href="https://hello-designers.vercel.app/#contact" class="btn btn-secondary">
+                <a href="#career" class="btn btn-secondary">
+                    Join Career
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
                     Request a Designer
                     <span class="btn-arrow">→</span>
                 </a>
             </div>
-        </div>
+</div>
 
         <div class="scroll-indicator">
             <div class="scroll-text">Scroll to explore</div>
             <div class="scroll-line"></div>
-        </div>
-    </section>
 
+        </div>
+
+    </section>
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="services-background">
@@ -852,31 +1038,29 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-background">
-            <div class="contact-orb contact-orb-1" style="transform: translateY(0px);"></div>
-            <div class="contact-orb contact-orb-2" style="transform: translateY(0px);"></div>
+            <div class="contact-orb contact-orb-1"></div>
+            <div class="contact-orb contact-orb-2"></div>
         </div>
 
         <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 10;">
             <div class="section-header">
                 <h2 class="section-title">Request a Designer</h2>
-                <p class="section-subtitle">Fill out the form below and we'll connect you with the perfect designer for your project</p>
+                <p class="section-subtitle">Fill out the form below and we'll connect you with <br>the perfect designer for your project</p>
             </div>
-
             <div class="contact-form-container">
                 <div class="form-card">
                     <form id="contact-form">
                         <div class="form-group-row">
                             <div class="form-group delay-1">
                                 <label for="name" class="form-label">Full Name *</label>
-                                <input type="text" id="name" name="name" placeholder="Your name" required="">
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
                             </div>
                             <div class="form-group delay-2">
                                 <label for="email" class="form-label">Email *</label>
-                                <input type="email" id="email" name="email" placeholder="your@email.com" required="">
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
                             </div>
                         </div>
 
@@ -887,7 +1071,7 @@
                             </div>
                             <div class="form-group delay-4">
                                 <label for="level" class="form-label">Designer Level Needed *</label>
-                                <select id="level" name="designerLevel" required="">
+                                <select id="level" name="designerLevel" required>
                                     <option value="">Select a level</option>
                                     <option value="Design Associate">Design Associate (1-2 yrs)</option>
                                     <option value="Design Analyst">Design Analyst (2-5 yrs)</option>
@@ -900,7 +1084,7 @@
 
                         <div class="form-group delay-3">
                             <label for="description" class="form-label">Project Description *</label>
-                            <textarea id="description" name="projectDescription" placeholder="Tell us about your design project..." required=""></textarea>
+                            <textarea id="description" name="projectDescription" placeholder="Tell us about your design project..." required></textarea>
                         </div>
 
                         <button type="submit" class="submit-btn" id="submit-btn">Send Request</button>
@@ -913,7 +1097,77 @@
             </div>
         </div>
     </section>
+    <!-- Career Section -->
+    <section class="career" id="career">
+        <div class="career-background">
+            <div class="career-orb career-orb-1"></div>
+            <div class="career-orb career-orb-2"></div>
+        </div>
+        <div class="career-content">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Join Our Creative Community
+                </h2>
+                <p class="section-subtitle">Are you in notice period or searching for a job? Want to earn more money in your leisure time?</p>
+            </div>
 
+            <div class="career-heading">
+                Let's connect your resume with <span class="career-heading-accent">Hello Designers</span>... we will align you with a client. No need to pay any charges - it's completely free!
+            </div>
+
+            <div class="career-benefits">
+                <h3>Why Join Us?</h3>
+                <ul>
+                    <li>100% Free - No hidden charges or commissions</li>
+                    <li>Flexible opportunities matching your experience level</li>
+                    <li>Work on diverse, interesting projects</li>
+                    <li>Build your professional portfolio with real clients</li>
+                    <li>Earn while you're in between jobs or on your own schedule</li>
+                </ul>
+            </div>
+
+            <div class="career-requirements">
+                <h3>What You Need</h3>
+                <p>Just one thing - <strong>a good configuration laptop that can run all graphic-related software</strong>. Whether you work with Adobe Creative Suite, Figma, or other design tools, your system should be capable of handling professional design work.</p>
+            </div>
+
+            <div class="career-form-container">
+                <div class="career-form-card">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.25rem;">Quick Enquiry Form</h3>
+                    <form id="career-form">
+                        <div class="career-form-group delay-1">
+                            <label for="career-name" class="form-label">Full Name *</label>
+                            <input type="text" id="career-name" name="name" placeholder="Your full name" required>
+                        </div>
+
+                        <div class="career-form-group delay-2">
+                            <label for="career-experience" class="form-label">Years of Experience *</label>
+                            <select id="career-experience" name="experience" required>
+                                <option value="">Select your experience</option>
+                                <option value="0-1 years">0-1 years</option>
+                                <option value="1-2 years">1-2 years</option>
+                                <option value="2-5 years">2-5 years</option>
+                                <option value="5-9 years">5-9 years</option>
+                                <option value="9-13 years">9-13 years</option>
+                                <option value="13+ years">13+ years</option>
+                            </select>
+                        </div>
+
+                        <div class="career-form-group delay-3">
+                            <label for="career-email" class="form-label">Email *</label>
+                            <input type="email" id="career-email" name="email" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="career-form-group delay-3" style="animation-delay: 0.65s;">
+                            <label for="career-phone" class="form-label">Phone Number *</label>
+                            <input type="tel" id="career-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+
+                        <button type="submit" class="career-submit-btn" id="career-submit-btn">Submit Enquiry</button>
+                    </form>
+                </div>
+</section>
+        
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -923,24 +1177,32 @@
             </div>
             <div class="footer-section">
                 <h4>Services</h4>
-                <a href="https://hello-designers.vercel.app/#services">Designer Levels</a><br>
-                <a href="https://hello-designers.vercel.app/#contact">Request Designer</a>
+                <a href="#services">Designer Levels</a><br>
+                <a href="#contact">Request Designer</a>
+            </div>
+            <div class="footer-section">
+                <h4>Career</h4>
+                <a href="#career">Join Career</a>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>Email: Support@hellodesigners.in</p>
+                <p>Email: support@hellodesigners.in</p>
                 <p>Phone: 79895 64100</p>
             </div>
             <div class="footer-section">
                 <h4>Links</h4>
-                <a href="https://hello-designers.vercel.app/#hero">Home</a><br>
-                <a href="https://hello-designers.vercel.app/#services">Services</a><br>
-                <a href="https://hello-designers.vercel.app/#contact">Contact</a>
+                <a href="#hero">Home</a><br>
+                <a href="#services">Services</a><br>
+                <a href="#career">Career</a><br>
+                <a href="#contact">Contact</a>
             </div>
         </div>
+            <div class="footer-bottom">
+            <p>&copy; 2025 Hello Designers. All rights reserved. Your Personal Creative Companion.</p>
+        </div>
 
-        <div class="footer-bottom">
-            <p>© 2025 Hello Designers. All rights reserved. Your Personal Creative Companion.</p>
+
+            </div>
         </div>
     </footer>
 
@@ -1084,7 +1346,7 @@ Project Description:
 ${formData.projectDescription}
             `.trim();
 
-            const mailtoLink = `mailto:support@hellodesigners.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoLink = `mailto:support@hellodesigners.in subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
 
             // Show success feedback
@@ -1095,6 +1357,43 @@ ${formData.projectDescription}
 
             setTimeout(() => {
                 document.getElementById('contact-form').reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1000);
+        });
+
+        // Career form submission
+        document.getElementById('career-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const careerData = {
+                name: document.getElementById('career-name').value,
+                email: document.getElementById('career-email').value,
+                phone: document.getElementById('career-phone').value,
+                experience: document.getElementById('career-experience').value
+            };
+
+            const subject = `Career Enquiry - ${careerData.experience} Experience`;
+            const body = `
+Name: ${careerData.name}
+Email: ${careerData.email}
+Phone: ${careerData.phone}
+Years of Experience: ${careerData.experience}
+
+This is a career enquiry for joining Hello Designers as a designer.
+            `.trim();
+
+            const mailtoLink = `mailto:support@hellodesigners.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+
+            // Show success feedback
+            const btn = document.getElementById('career-submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Opening email...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('career-form').reset();
                 btn.textContent = originalText;
                 btn.disabled = false;
             }, 1000);
@@ -1129,6 +1428,5 @@ ${formData.projectDescription}
 
         document.querySelectorAll('.tier-card').forEach(card => observer.observe(card));
     </script>
-
-
-</body></html>
+</body>
+</html>
