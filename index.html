@@ -24,9 +24,10 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: var(--background);
-            color: var(--foreground);
+                    color: var(--foreground);
             line-height: 1.6;
             overflow-x: hidden;
+            <script src="/birds.js" type="animation: ;/javascript" charset="utf-8" async defer></script>
         }
 
         /* Animations */
@@ -830,6 +831,53 @@
             color: var(--foreground);
             text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
         }
+        /* Add floating call button styles */
+        .floating-call-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            border: 2px solid #00ff00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none;
+        }
+
+        .floating-call-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8), 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .floating-call-btn svg {
+            width: 28px;
+            height: 28px;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .floating-call-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .floating-call-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+
 
         /* Footer */
         footer {
@@ -923,8 +971,7 @@
             <div class="hero-orb hero-orb-1" id="orb1"></div>
             <div class="hero-orb hero-orb-2" id="orb2"></div>
         </div>
-
-        <div class="hero-content">
+    <div class="hero-content">
             <div class="hero-badge">✨ Your Personal Creative Companion</div>
             <h1 class="hero-title">
                 <span class="hero-title-primary">Professional Designers</span>
@@ -1167,6 +1214,14 @@
                     </form>
                 </div>
 </section>
+<!-- Floating Call Button -->
+    <a href="tel:+919895641000" class="floating-call-btn" title="Call Us">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+    </a>
+
+
         
     <!-- Footer -->
     <footer>
